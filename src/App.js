@@ -3,6 +3,7 @@ import { TodoCounter } from './componentes/TodoCounter';
 import { TodoSearch } from './componentes/TodoSearch';
 import { TodoList } from './componentes/TodoList';
 import { TodoItem } from './componentes/TodoItem';
+import { TodoButton } from './componentes/TodoButton';
 
 function App() {
 	return (
@@ -17,7 +18,7 @@ function App() {
 				<TodoItem />
 			</TodoList>
 
-			{/* <TodoButton /> */}
+			<TodoButton />
 		</div>
 	);
 }
