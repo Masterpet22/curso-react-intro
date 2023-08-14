@@ -4,12 +4,13 @@ import { TodoSearch } from './componentes/TodoSearch';
 import { TodoList } from './componentes/TodoList';
 import { TodoItem } from './componentes/TodoItem';
 import { TodoButton } from './componentes/TodoButton';
+import React from 'react';
 
 function App() {
 	return (
-		<div className="App">
+		<React.Fragment>
 
-			<TodoCounter />
+			<TodoCounter completed={16} total={25}/>
 			<TodoSearch />
 
 			<TodoList>
@@ -19,7 +20,7 @@ function App() {
 			</TodoList>
 
 			<TodoButton />
-		</div>
+		</React.Fragment>
 	);
 }
 

@@ -1,6 +1,6 @@
 function TodoButton(){
 	return(
-		<button>Agregar tarea</button>
+		<button>+</button>
 	)
 }
 export { TodoButton }
