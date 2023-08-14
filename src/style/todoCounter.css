@@ -1,7 +1,11 @@
 h1{
-	font-size: 2rem;
+	font-size: 1.8em;
 	text-align: 'center';
 	margin: 0;
-	padding: 25px;
-	color: #F2E6DF;
+	padding: 48px;
+	font-weight: normal;
+}
+
+h1 span{
+	font-weight: bold;
 }

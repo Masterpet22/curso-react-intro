@@ -17,14 +17,14 @@ function App() {
 
 			<TodoCounter completed={16} total={25}/>
 			<TodoSearch />
-			<TodoButton />
 
 			<TodoList>
 				{defaultTodos.map(todo =>(
 					<TodoItem key={todo.text} text={todo.text} completed={todo.completed}/>
-				))}
+					))}
 				
 			</TodoList>
+			<TodoButton />
 
 		</>
 	);
