@@ -1,0 +1,10 @@
+ul{
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	padding: 25px;
+	background-color: #BBCDF2;
+	max-width: 500px;
+	border-radius: 20px;
+}

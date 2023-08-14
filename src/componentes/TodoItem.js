@@ -1,9 +1,10 @@
+import '../style/todoItem.css'
 function TodoItem(props){
 		return(
 			<li>
-				<span>V {props.completed}</span>
+				<span>✔ {props.completed}</span>
 				<p>{props.text}</p>
-				<span>X</span>
+				<span>❌</span>
 			</li>
 		)
 }
