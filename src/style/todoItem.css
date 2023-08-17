@@ -29,6 +29,7 @@
 	width: 48px;
 	font-size: 24px;
 	font-weight: bold;
+	user-select: none;
 }
 .icon-check{
 	position: absolute;

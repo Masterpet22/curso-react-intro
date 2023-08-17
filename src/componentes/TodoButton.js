@@ -1,7 +1,9 @@
 import '../style/todoButton.css'
 function TodoButton(){
 	return(
-		<button>+</button>
+		<button onClick={
+			(e)=>{console.log(e.target)}
+		}>+</button>
 	)
 }
 export { TodoButton }

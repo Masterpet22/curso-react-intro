@@ -3,8 +3,8 @@ ul{
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
-	padding: 25px;
 	background-color: #BBCDF2;
 	max-width: 500px;
 	border-radius: 20px;
+	padding: 0 10px 56px 10px;
 }
