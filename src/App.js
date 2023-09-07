@@ -15,19 +15,29 @@ import './style/App.css'
 
 // localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos))
 
-function App() {
-	const localStorageTodos = localStorage.getItem('TODOS_V1')
-	let parsedTodos
+//custom hooks que llamamos useLocalStorage
+function useLocalStore(itemName,initialValue){
+	const localStorageItem = localStorage.getItem(itemName)
+	let parsedItem
 	
-	if (!localStorageTodos){
-		localStorage.setItem('TODOS_V1', JSON.stringify([]))
-		parsedTodos = []
+	if (!localStorageItem){
+		localStorage.setItem(itemName, JSON.stringify(initialValue))
+		parsedItem = initialValue
 	}else{
-		parsedTodos = JSON.parse(localStorageTodos)
+		parsedItem = JSON.parse(localStorageItem)
 	}
+	const [item, setItem] = React.useState(parsedItem)
 
+	const saveItem = (newItem)=>{
+		localStorage.setItem(itemName, JSON.stringify(newItem))
+		setItem(newItem)
+	}
+	return [item, saveItem]
+}
+
+function App() {
+	const [todos, saveTodos] = useLocalStore('TODOS_V1', [])
 	const [searchValue, setSearchValue] = React.useState('')
-	const [todos, setTodos] = React.useState(parsedTodos)
 
 	const completedTodos = todos.filter(todo => !!todo.completed).length
 	const totalTodos = todos.length
@@ -39,10 +49,6 @@ function App() {
 			return todoText.includes(searchText)
 		}
 	)
-	const saveTodos = (newTodos)=>{
-		localStorage.setItem("TODOS_V1", JSON.stringify(newTodos))
-		setTodos(newTodos)
-	}
 
 	const completeTodo = (text) => {
 		const newTodos = [...todos]
@@ -62,11 +68,8 @@ function App() {
 		saveTodos(newTodos)
 	}
 
-	
-
 	return (
 		<>
-
 			<TodoCounter completed={completedTodos} total={totalTodos}/>
 			<TodoSearch 
 				searchValue={searchValue}
@@ -85,10 +88,8 @@ function App() {
 				
 			</TodoList>
 			<TodoButton />
-
 		</>
 	);
 }
-
 
 export default App;
