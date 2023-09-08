@@ -16,19 +16,19 @@ import './style/App.css'
 // localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos))
 
 //custom hooks que llamamos useLocalStorage
-function useLocalStore(itemName,initialValue){
+function useLocalStore(itemName, initialValue) {
 	const localStorageItem = localStorage.getItem(itemName)
 	let parsedItem
-	
-	if (!localStorageItem){
+
+	if (!localStorageItem) {
 		localStorage.setItem(itemName, JSON.stringify(initialValue))
 		parsedItem = initialValue
-	}else{
+	} else {
 		parsedItem = JSON.parse(localStorageItem)
 	}
 	const [item, setItem] = React.useState(parsedItem)
 
-	const saveItem = (newItem)=>{
+	const saveItem = (newItem) => {
 		localStorage.setItem(itemName, JSON.stringify(newItem))
 		setItem(newItem)
 	}
@@ -43,7 +43,7 @@ function App() {
 	const totalTodos = todos.length
 
 	const searchedTodos = todos.filter(
-		(todo)=>{
+		(todo) => {
 			const todoText = todo.text.toLowerCase()
 			const searchText = searchValue.toLowerCase()
 			return todoText.includes(searchText)
@@ -53,39 +53,38 @@ function App() {
 	const completeTodo = (text) => {
 		const newTodos = [...todos]
 		const todoIndex = newTodos.findIndex(
-			(todo) => todo.text == text
+			(todo) => todo.text === text
 		)
 		newTodos[todoIndex].completed = true
 		saveTodos(newTodos)
 	}
-	
+
 	const deleteTodo = (text) => {
 		const newTodos = [...todos]
 		const todoIndex = newTodos.findIndex(
-			(todo) => todo.text == text
+			(todo) => todo.text === text
 		)
-		newTodos.splice(todoIndex,1)
+		newTodos.splice(todoIndex, 1)
 		saveTodos(newTodos)
 	}
 
 	return (
 		<>
-			<TodoCounter completed={completedTodos} total={totalTodos}/>
-			<TodoSearch 
+			<TodoCounter completed={completedTodos} total={totalTodos} />
+			<TodoSearch
 				searchValue={searchValue}
 				setSearchValue={setSearchValue}
 			/>
 
 			<TodoList>
-				{searchedTodos.map(todo =>(
-					<TodoItem 
-					key={todo.text} 
-					text={todo.text} 
-					completed={todo.completed}
-					onComplete={()=> completeTodo(todo.text)}
-					onDelete={()=> deleteTodo(todo.text)}/>
-					))}
-				
+				{searchedTodos.map(todo => (
+					<TodoItem
+						key={todo.text}
+						text={todo.text}
+						completed={todo.completed}
+						onComplete={() => completeTodo(todo.text)}
+						onDelete={() => deleteTodo(todo.text)} />
+				))}
 			</TodoList>
 			<TodoButton />
 		</>
