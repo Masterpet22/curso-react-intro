@@ -3,7 +3,7 @@ import '../style/todoCounter.css'
 
 function TodoCounter({ total, completed }){
 	return(
-		total == completed ?
+		total === completed ?
 		<h1>
 			No tienes tareas pendiente 🥳
 		</h1>
